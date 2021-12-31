@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 0.01f;
-    [SerializeField] float xValue = 0f;
-    [SerializeField] float yValue = 0.01f;
-    [SerializeField] float zValue = 0f;
+    [SerializeField] float moveSpeed = 10f;
 
     void Start()
     {
@@ -16,6 +11,8 @@ public class Mover : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(xValue, yValue, zValue);
+        float xValue = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        float zValue = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        transform.Translate(xValue, 0, zValue);
     }
 }
